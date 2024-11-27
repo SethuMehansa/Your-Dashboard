@@ -1,0 +1,9 @@
+body{
+    background-color: black;
+}
+header{
+background-color: rgb(255, 255, 255);
+width: 100%;
+position: fixed;
+
+}
