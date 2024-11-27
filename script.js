@@ -83,6 +83,26 @@ function checked(){
         }
       }
     });
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ["Work","Breaks"],
+        datasets: [{
+          label: "Progress",
+          data: [60,40],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
 
 
 function addTask(){

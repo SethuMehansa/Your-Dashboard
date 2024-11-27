@@ -75,3 +75,8 @@ margin: 10px;
     text-align: center;
 }
     
+.chart{
+    margin: 10%;
+    width: 700px;
+    height: 700px;
+}
