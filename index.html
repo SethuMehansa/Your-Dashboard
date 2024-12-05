@@ -8,65 +8,108 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
 </head>
 <body>
-    <header>
-    <div class="nav">
-        <nav>
-            <ul>
-<li><a href="index.html" class="tab">Dashboard</a></li>                   
-<li><a href="index2.html">Schedule <i class="bi bi-card-checklist"></i></a></li>
-<li><a href="index3.html">Complete Status <i class="bi bi-pie-chart"></i></a></li>
-<li><a href="index4.html">Check-List <i class="bi bi-check-square"></i></a></li>
-
-            </ul>
-        </nav>
-    </div>
-   </header>
-   <div>
-<h2 class="title">Study Time Manager</h2>
-
-   <div class="grid-container">
-    <div class="grid-item"><!-- Manage Schedule --> 
-        <a href="index2.html" target="_blank">
-        <div data-aos="fade-right"> 
-            <div class="card"> 
-                <div class="card-body"> 
-                    <img src="images/schedule.jpg" alt="" class="cardimgs"></a>
-                    <h5 class="card-title">Manage Schedule</h5> 
-                    <p class="card-text">Update/Read your schedule</p> 
-                </div> 
-            </div>  
-        </div>
-       </div></div>
-    <div class="grid-item">  <!-- Completed --> 
-        <a href="index3.html" target="_blank">
-            <div data-aos="fade-right"> 
-                <div class="card"> 
-                    <div class="card-body"> 
-                        <img src="images/complete.jpg" alt="" class="cardimgs"></a>
-                        <h5 class="card-title">Complete Status</h5> 
-                        <p class="card-text">Check your Progress</p> 
-                    </div> 
-                </div> 
-            </div> </div>
-    <div class="grid-item">
-        <!-- CheckList -->
-          <a href="index4.html" target="_blank">
-              <div data-aos="fade-right"> 
-                  <div class="card"> 
-                      <div class="card-body"> 
-                          <img src="images/priority list.jpg" alt="" class="cardimgs"></a>
-                          <h5 class="card-title">Priority List</h5> 
-                          <p class="card-text">Track important tasks</p> 
-                      </div> 
-                  </div> 
-              </div> </div>
-    
-             
+   <header>
+<div class="nav">
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#checklist">Check-List</a></li>
+            <li><a href="#status">Status</a></li>
+            <li><a href="#studybuddy">Study Buddy</a></li>
+            <li><a href=""><h3 id="username"></h3></a> </li>
+            <li><h1 class="studyTracker" style="color: rgb(238, 239, 241);">StudyTracker</h1></li>
+        </ul>
+    </nav>
 </div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   </header> 
+<section id="home">
+<div  class="container">
+    <div class="row">
+    <div class="col" style="align-content: center;">
+        <input type="text" id="name" placeholder="User Name" class="txtfield">
+        <div><textarea name="Description" id="description" class="txtfield" placeholder="Description"></textarea></div>
+        <div><input type="button" onclick="updateuser()" value="Update User" class="btnupdate"></div>
+    </div>
+    <div class="col">
+<img src="images/user.png" id="profpic" class="profpic">
+<label for="inputimg" class="btnupdate">Profile Picture <i class="bi bi-pencil"></i></label>
+<input type="file" accept="image/jpeg,image/png,image/jpg" id="inputimg" style="display: none;">
+    </div>
+</div>
+</div>
+</section>
+<div class="container">
+<p>
+    Success is not about working harder; it's about working smarter. A well-managed study schedule can unlock your full potential, turning overwhelming workloads into manageable goals. With every minute planned, you're not just saving time but investing in your future. Stay disciplined, stay focused, and remember—small, consistent efforts every day lead to extraordinary achievements. Let this study time manager be your partner in growth, guiding you step by step toward your dreams!  
+</p>
+</div>
+
+<section id="checklist">
+    <div>
+<h1 class="head">Check-List</h1>
+</div>
+    <div class="container"> 
+       <input type="text" placeholder="Enter Subject" id="subject" class="txtfield">
+      <input type="number" placeholder="Enter Number of Hours" id="time"  class="txtfield">
+       <input type="date" name="Day" id="day"  class="txtfield">
+         <button onclick="save()" class="btnupdate">Save <i class="bi bi-save"></i></button>
+     </div>
+     <div class="container">
+        <div class="listarea">
+     <table id="printtasks">
+     </table>
+    </div>
+     </div>
+</section>
+
+<section id="status">
+    <div>
+    <h1 class="head">Status</h1>
+    </div>
+<div class="chartarea">
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+</div>
+<div class="chartarea">
+    <div>
+        <canvas id="myChart2"></canvas>
+      </div>
+</div>
+</section>
+
+    <section id="studybuddy">
+<div>
+    <h1 class="head">Study Buddy</h1>
+    </div>
+    <div id="chatarea">
+        <h3 class="me text-end">${texts}<h6 class="time">${currenttime.toLocaleTimeString()}</h6></h3>
+        <h3 class="text-start bot">${result.candidates[0].content.parts[0].text}<h6 class="time text-end">${currenttime.toLocaleTimeString()}</h6></h3>`;
+    </div>
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+    <input type="text" id="textinput" class="txtfield">
+    <button class="btnupdate" onclick="send()"><i class="bi bi-send-fill"></i></button>
+</div>
+    </section>
+   <footer>
+    <div class="row">
+<div class="col">
+    <h1 class="studyTracker">StudyTracker</h1>
+    <h6 style="font-size: small;">©StudyTracker</h6>
+</div>
+<div class="col">
+    <h6>About</h6>
+    <h6>Our Study Planner is designed to help you manage your time effectively, track your progress, and achieve your academic goals. From creating personalized schedules to visualizing your study efforts through insightful charts, we’re here to make learning smarter, not harder. With features like a checklist and a friendly Study Buddy chatbot, staying organized and motivated has never been easier. Let’s pave the way to success, one productive day at a time!</h6>
+</div>
+
+    </div>
+   </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
     <script>
         AOS.init();
