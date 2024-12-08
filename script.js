@@ -232,7 +232,7 @@ document.getElementById("textinput").value=""
     headers: myHeaders,
     body: raw,
   };
-  fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDA8a72dudTDrF7AEAfxZQcCFdNQx8o1r8", requestOptions)
+  fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_API_KEY", requestOptions)
     .then((response) => response.json())
     .then((result) => {
       
